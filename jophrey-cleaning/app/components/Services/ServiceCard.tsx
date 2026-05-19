@@ -1,0 +1,33 @@
+interface ServiceCardProps {
+  icon: string;
+  title: string;
+  description: string;
+  isHighlighted?: boolean;
+}
+
+export function ServiceCard({
+  icon,
+  title,
+  description,
+  isHighlighted = false,
+}: ServiceCardProps) {
+  return (
+    <div
+      className={`p-7 md:p-8 rounded-2xl md:rounded-3xl border-2 transition-all duration-300 hover:shadow-md hover:-translate-y-1 cursor-default
+        ${
+          isHighlighted
+            ? "bg-pink-pale border-pink-mid"
+            : "bg-cream border-border hover:bg-white"
+        }
+      `}
+    >
+      <div className="text-3xl md:text-4xl mb-4">{icon}</div>
+      <h3 className="font-playfair text-xl md:text-2xl font-semibold text-purple mb-3">
+        {title}
+      </h3>
+      <p className="text-sm md:text-base text-text-muted leading-relaxed">
+        {description}
+      </p>
+    </div>
+  );
+}
