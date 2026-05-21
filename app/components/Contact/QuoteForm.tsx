@@ -3,46 +3,60 @@
 import { useState } from "react";
 import { services } from "@/data/services";
 
-export function QuoteForm() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    service: "",
-    area: "",
-    notes: "",
-  });
+const emptyForm = {
+  firstName: "",
+  lastName: "",
+  phone: "",
+  service: "",
+  area: "",
+  notes: "",
+};
 
+export function QuoteForm() {
+  const [formData, setFormData] = useState(emptyForm);
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert(
-      `Thanks for reaching out! Irene will be in touch soon 🌸\n\nWe received your request for: ${formData.service || "custom service"}`
-    );
-
-    setFormData({
-      firstName: "",
-      lastName: "",
-      phone: "",
-      service: "",
-      area: "",
-      notes: "",
-    });
-
     setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 2000);
   };
+
+  const handleReset = () => {
+    setFormData(emptyForm);
+    setSubmitted(false);
+  };
+
+  if (submitted) {
+    return (
+      <div className="bg-white rounded-2xl md:rounded-3xl p-8 md:p-10 flex flex-col items-center justify-center text-center gap-6 min-h-[400px]">
+        <div className="w-16 h-16 rounded-full bg-pink-pale flex items-center justify-center text-3xl">
+          🌸
+        </div>
+        <div>
+          <h3 className="font-playfair text-2xl md:text-3xl font-semibold text-purple mb-3">
+            Thank you, {formData.firstName}!
+          </h3>
+          <p className="text-text-muted text-base leading-relaxed max-w-sm">
+            Irene will review your request and get back to you shortly. We look
+            forward to taking care of your home.
+          </p>
+        </div>
+        <button
+          onClick={handleReset}
+          className="text-sm text-pink underline underline-offset-4 hover:text-purple transition-colors"
+        >
+          Send another request
+        </button>
+      </div>
+    );
+  }
 
   return (
     <form
@@ -135,18 +149,9 @@ export function QuoteForm() {
         />
       </div>
 
-      <button
-        type="submit"
-        className="w-full btn-primary text-center font-semibold"
-      >
+      <button type="submit" className="w-full btn-primary text-center font-semibold">
         Send quote request →
       </button>
-
-      {submitted && (
-        <p className="text-sm text-green-600 text-center">
-          ✓ Thank you! We'll be in touch soon.
-        </p>
-      )}
     </form>
   );
 }

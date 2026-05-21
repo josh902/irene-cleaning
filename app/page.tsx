@@ -1,13 +1,25 @@
+import Navbar from "./components/Navbar";
+import HeroSection from "./components/Hero/HeroSection";
+import ServicesSection from "./components/Services/ServicesSection";
+import GallerySection from "./components/Gallery/GallerySection";
+import WhySection from "./components/WhyUs/WhySection";
+import OwnerSection from "./components/Owner/OwnerSection";
+import AreasSection from "./components/Areas/AreasSection";
+import ContactSection from "./components/Contact/ContactSection";
+import { Footer } from "./components/Footer";
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
-      <h1 className="text-5xl font-bold mb-4">
-        Irene Cleaning Services
-      </h1>
-
-      <p className="text-zinc-400 text-xl">
-        Premium Residential & Commercial Cleaning
-      </p>
+    <main>
+      <Navbar />
+      <HeroSection />
+      <ServicesSection />
+      <GallerySection />
+      <WhySection />
+      <OwnerSection />
+      <AreasSection />
+      <ContactSection />
+      <Footer />
     </main>
   );
 }
