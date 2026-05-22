@@ -1,16 +1,19 @@
 import Image from "next/image";
 import { SectionHeader } from "../ui/SectionHeader";
+import { Reveal } from "../ui/Reveal";
 
 export default function OwnerSection() {
   return (
     <section id="owner">
       <div className="container mx-auto">
-        <SectionHeader
-          label="Meet The Owner"
-          title="Irene — Your Trusted Cleaning Professional"
-        />
+        <Reveal>
+          <SectionHeader
+            label="Meet The Owner"
+            title="Irene — Your Trusted Cleaning Professional"
+          />
+        </Reveal>
 
-        <div className="gradient-subtle rounded-2xl sm:rounded-3xl border-2 border-pink-pale p-6 sm:p-8 md:p-12 lg:p-16 mt-12">
+        <Reveal className="gradient-subtle rounded-2xl sm:rounded-3xl border-2 border-pink-pale p-6 sm:p-8 md:p-12 lg:p-16 mt-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="order-2 lg:order-1">
               <div className="relative h-72 sm:h-96 md:h-[450px] rounded-2xl md:rounded-3xl overflow-hidden shadow-lg">
@@ -47,7 +50,7 @@ export default function OwnerSection() {
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

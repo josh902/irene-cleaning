@@ -1,3 +1,5 @@
+import { Icon } from "../ui/Icon";
+
 interface ContactWayProps {
   icon: string;
   label: string;
@@ -17,8 +19,8 @@ export function ContactWay({
 }: ContactWayProps) {
   const content = (
     <div className="flex items-center gap-4 min-w-0 w-full">
-      <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-white/12 flex items-center justify-center text-xl">
-        {icon}
+      <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-white/15 text-white flex items-center justify-center">
+        <Icon name={icon} className="w-5 h-5" />
       </div>
       <div className="min-w-0 flex-1">
         <p className="text-xs text-white/50 uppercase tracking-wide font-medium">

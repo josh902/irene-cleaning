@@ -10,26 +10,26 @@ export function HeroCard() {
 
       <div className="space-y-3 mb-6">
         <ServicePill
-          icon="🏡"
+          icon="home"
           label="Residential homes"
           sub="Full home cleaning, any size"
         />
         <ServicePill
-          icon="🏢"
+          icon="building"
           label="Condos & apartments"
           sub="Compact spaces, full service"
         />
         <ServicePill
-          icon="📦"
+          icon="package"
           label="Move-in / move-out"
           sub="Leave it spotless for the next chapter"
         />
       </div>
 
       <div className="flex flex-wrap gap-2 pt-6 border-t border-border">
-        <TrustBadge text="✓ Supplies included" />
-        <TrustBadge text="✓ Registered since 2022" />
-        <TrustBadge text="✓ Flexible scheduling" />
+        <TrustBadge text="Supplies included" />
+        <TrustBadge text="Registered since 2022" />
+        <TrustBadge text="Flexible scheduling" />
       </div>
     </div>
   );

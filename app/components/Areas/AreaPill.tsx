@@ -9,8 +9,8 @@ export function AreaPill({ name, isMain = false }: AreaPillProps) {
       className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium text-sm md:text-base transition-all cursor-default
         ${
           isMain
-            ? "bg-pink text-white border-2 border-pink"
-            : "bg-white text-text border-2 border-border hover:bg-pink-pale hover:border-pink-mid hover:text-purple"
+            ? "bg-pink-pale text-purple border-2 border-pink-mid font-semibold"
+            : "bg-white text-text-muted border-2 border-border hover:bg-pink-pale hover:border-pink-mid hover:text-purple"
         }
       `}
     >

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { href: "#services", label: "Services" },
@@ -51,9 +52,9 @@ export default function Navbar() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden text-pink text-2xl leading-none w-10 h-10 flex items-center justify-center rounded-lg hover:bg-pink-pale transition-colors"
+          className="md:hidden text-pink w-10 h-10 flex items-center justify-center rounded-lg hover:bg-pink-pale transition-colors"
         >
-          {open ? "✕" : "☰"}
+          {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 

@@ -1,17 +1,21 @@
 import { SectionHeader } from "../ui/SectionHeader";
+import { Reveal } from "../ui/Reveal";
 import Image from "next/image";
+import { Check } from "lucide-react";
 
 export default function GallerySection() {
   return (
     <section className="bg-cream">
       <div className="container mx-auto">
-        <SectionHeader
-          label="Our Work"
-          title="Transformation In Action"
-          subtitle="See the quality and attention to detail we bring to every cleaning job."
-        />
+        <Reveal>
+          <SectionHeader
+            label="Our Work"
+            title="Transformation In Action"
+            subtitle="See the quality and attention to detail we bring to every cleaning job."
+          />
+        </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mt-12">
+        <Reveal className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mt-12">
           <div className="order-2 lg:order-1">
             <div className="relative h-64 sm:h-80 md:h-96 lg:h-[400px] rounded-2xl md:rounded-3xl overflow-hidden shadow-lg">
               <Image
@@ -35,21 +39,21 @@ export default function GallerySection() {
               products to deliver spotless results.
             </p>
             <div className="space-y-4">
-              <div className="flex items-start gap-3 p-4 bg-white rounded-xl border-l-4 border-pink">
-                <span className="text-2xl">✓</span>
+              <div className="flex items-center gap-3 p-4 bg-white rounded-xl border-l-4 border-pink">
+                <Check className="w-6 h-6 text-pink flex-shrink-0" strokeWidth={2.5} aria-hidden="true" />
                 <span className="font-semibold text-purple">
                   Detailed, thorough cleaning in every corner
                 </span>
               </div>
-              <div className="flex items-start gap-3 p-4 bg-white rounded-xl border-l-4 border-pink">
-                <span className="text-2xl">✓</span>
+              <div className="flex items-center gap-3 p-4 bg-white rounded-xl border-l-4 border-pink">
+                <Check className="w-6 h-6 text-pink flex-shrink-0" strokeWidth={2.5} aria-hidden="true" />
                 <span className="font-semibold text-purple">
                   Safe, quality products for your family
                 </span>
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

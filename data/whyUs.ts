@@ -8,28 +8,28 @@ export interface WhyItem {
 export const whyUs: WhyItem[] = [
   {
     id: "friendly",
-    icon: "🤝",
+    icon: "handshake",
     title: "Friendly & professional",
     description:
       "We treat every home with care and respect — and we're always a pleasure to work with.",
   },
   {
     id: "supplies",
-    icon: "🧴",
+    icon: "spray",
     title: "We bring everything",
     description:
       "No need to stock up on supplies. We arrive fully equipped with everything needed.",
   },
   {
     id: "scheduling",
-    icon: "📅",
+    icon: "calendar",
     title: "Flexible scheduling",
     description:
       "Life is busy — we work around your schedule, not the other way around.",
   },
   {
     id: "local",
-    icon: "📍",
+    icon: "pin",
     title: "Proudly local",
     description:
       "We're part of the Halifax community. Supporting us means supporting a local family business.",
