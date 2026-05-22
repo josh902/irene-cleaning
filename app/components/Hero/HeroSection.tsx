@@ -46,7 +46,7 @@ export default function HeroSection() {
               <Button variant="primary" href="#contact">
                 Get a free quote
               </Button>
-              <Button variant="outline" href="#services">
+              <Button variant="outline-light" href="#services">
                 Our services
               </Button>
             </div>

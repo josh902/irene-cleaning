@@ -1,6 +1,6 @@
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: "primary" | "outline";
+  variant?: "primary" | "outline" | "outline-light";
   size?: "sm" | "md" | "lg";
   className?: string;
   href?: string;
@@ -29,6 +29,8 @@ export default function Button({
       "bg-pink text-white border-2 border-pink hover:bg-purple hover:border-purple",
     outline:
       "bg-transparent text-pink border-2 border-pink hover:bg-pink-pale",
+    "outline-light":
+      "bg-white/10 text-white border-2 border-white backdrop-blur-sm hover:bg-white hover:text-purple",
   };
 
   const combinedClasses = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
