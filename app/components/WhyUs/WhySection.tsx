@@ -4,7 +4,7 @@ import { whyUs, certifications } from "@/data/whyUs";
 
 export default function WhySection() {
   return (
-    <section id="why-us" className="py-20 md:py-24 px-6 md:px-12">
+    <section id="why-us">
       <div className="container mx-auto">
         <SectionHeader
           label="Why Choose Us"
@@ -23,7 +23,7 @@ export default function WhySection() {
             ))}
           </div>
 
-          <div className="gradient-primary rounded-2xl md:rounded-3xl p-8 md:p-12 text-white">
+          <div className="gradient-primary rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-12 text-white">
             <h3 className="font-playfair text-2xl md:text-3xl font-semibold mb-2">
               Registered & trusted
             </h3>

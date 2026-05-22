@@ -6,7 +6,7 @@ interface AreaPillProps {
 export function AreaPill({ name, isMain = false }: AreaPillProps) {
   return (
     <div
-      className={`px-6 py-3 rounded-full font-medium text-sm md:text-base transition-all cursor-default
+      className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-full font-medium text-sm md:text-base transition-all cursor-default
         ${
           isMain
             ? "bg-pink text-white border-2 border-pink"

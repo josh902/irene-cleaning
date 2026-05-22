@@ -13,7 +13,7 @@ export function ServiceCard({
 }: ServiceCardProps) {
   return (
     <div
-      className={`p-7 md:p-8 rounded-2xl md:rounded-3xl border-2 transition-all duration-300 hover:shadow-md hover:-translate-y-1 cursor-default
+      className={`p-6 sm:p-7 md:p-8 rounded-2xl md:rounded-3xl border-2 transition-all duration-300 hover:shadow-md hover:-translate-y-1 cursor-default
         ${
           isHighlighted
             ? "bg-pink-pale border-pink-mid"

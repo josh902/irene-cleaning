@@ -46,7 +46,13 @@ Each section folder (e.g. `Hero/`, `Services/`) contains the section component p
 
 ### Styling
 
-Tailwind CSS v4 (PostCSS plugin via `@tailwindcss/postcss`). Custom design tokens are defined inside `app/globals.css` using `@theme inline`. The brand palette uses custom color names (`pink`, `purple`, `pink-pale`, `pink-mid`) and custom fonts (`font-playfair`, `font-dmsans`). Use these tokens rather than hardcoding hex values.
+Tailwind CSS v4 (PostCSS plugin via `@tailwindcss/postcss`), but the project uses a **v3-format config file** (`tailwind.config.ts`) loaded via `@config "../tailwind.config.ts"` at the top of `app/globals.css`. Brand color tokens (`pink`, `purple`, `pink-pale`, `pink-mid`, `cream`, `text-muted`, `border`) and fonts (`font-playfair`, `font-dmsans`) live in `tailwind.config.ts` — edit there, not in `globals.css`. Use these tokens rather than hardcoding hex values.
+
+Google Fonts (Playfair Display, DM Sans) are loaded via a CSS `@import url(...)` at the very first line of `globals.css` — keep it first, since `@import` rules must precede all other rules.
+
+### Next config
+
+`next.config.js` holds business contact info as `NEXT_PUBLIC_*` env vars (`NEXT_PUBLIC_BUSINESS_NAME`, `NEXT_PUBLIC_PHONE`, `NEXT_PUBLIC_EMAIL`) and image cache headers for `/images/*`. Static images live in `public/images/` (Next.js serves `public/` at the URL root).
 
 ### Path alias
 
@@ -54,4 +60,4 @@ Tailwind CSS v4 (PostCSS plugin via `@tailwindcss/postcss`). Custom design token
 
 ### Contact form
 
-`QuoteForm` is a `"use client"` component — the only client component in the project. Currently submits via `alert()` only (no backend). Form state is local `useState`; it imports `services` from the data layer to populate the service dropdown.
+`QuoteForm` is a `"use client"` component — the only client component in the project. No backend yet: on submit it swaps to an in-form thank-you screen (with a "Send another request" reset link). Form state is local `useState`; it imports `services` from the data layer to populate the service dropdown.

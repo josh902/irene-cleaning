@@ -3,16 +3,13 @@ import { QuoteForm } from "./QuoteForm";
 
 export default function ContactSection() {
   return (
-    <section
-      id="contact"
-      className="bg-purple py-20 md:py-24 px-6 md:px-12"
-    >
+    <section id="contact" className="bg-purple">
       <div className="container mx-auto">
-        <div className="mb-12">
+        <div className="mb-10 md:mb-12">
           <p className="text-xs md:text-sm font-bold uppercase tracking-widest text-pink-mid mb-2">
             Get in touch
           </p>
-          <h2 className="text-4xl md:text-5xl font-playfair font-semibold text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-playfair font-semibold text-white mb-4 text-balance">
             Ready for a cleaner home?
           </h2>
           <p className="text-base md:text-lg text-white/60 max-w-md leading-relaxed">

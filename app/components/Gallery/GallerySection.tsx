@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function GallerySection() {
   return (
-    <section className="bg-cream py-20 md:py-24 px-6 md:px-12">
+    <section className="bg-cream">
       <div className="container mx-auto">
         <SectionHeader
           label="Our Work"
@@ -13,7 +13,7 @@ export default function GallerySection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mt-12">
           <div className="order-2 lg:order-1">
-            <div className="relative h-80 md:h-96 lg:h-[400px] rounded-2xl md:rounded-3xl overflow-hidden shadow-lg">
+            <div className="relative h-64 sm:h-80 md:h-96 lg:h-[400px] rounded-2xl md:rounded-3xl overflow-hidden shadow-lg">
               <Image
                 src="/images/image2.avif"
                 alt="Professional cleaning service showcase"

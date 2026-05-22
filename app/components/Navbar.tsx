@@ -1,49 +1,87 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
+const navLinks = [
+  { href: "#services", label: "Services" },
+  { href: "#why-us", label: "Why Us" },
+  { href: "#areas", label: "Areas" },
+];
+
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
     <nav className="sticky top-0 z-50 glass border-b border-border">
       <div className="container mx-auto px-4 md:px-8 lg:px-12 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-1">
+        <a href="#hero" className="flex items-center gap-1">
           <div className="font-playfair text-lg md:text-xl font-semibold text-purple">
-            Jophrey{" "}
-            <span className="text-pink italic">
-              Cleaning
-            </span>
+            Jophrey <span className="text-pink italic">Cleaning</span>
           </div>
-        </div>
+        </a>
 
         <div className="hidden md:flex items-center gap-8">
-          <a
-            href="#services"
-            className="text-sm text-text-muted font-medium hover:text-pink transition-colors"
-          >
-            Services
-          </a>
-          <a
-            href="#why-us"
-            className="text-sm text-text-muted font-medium hover:text-pink transition-colors"
-          >
-            Why Us
-          </a>
-          <a
-            href="#areas"
-            className="text-sm text-text-muted font-medium hover:text-pink transition-colors"
-          >
-            Areas
-          </a>
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm text-text-muted font-medium hover:text-pink transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
 
-          <a
-            href="#contact"
-            className="btn-primary text-xs md:text-sm"
-          >
+          <a href="#contact" className="btn-primary text-xs md:text-sm">
             Get a Quote
           </a>
         </div>
 
-        <button className="md:hidden text-pink">
-          ☰
+        <button
+          type="button"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => setOpen((v) => !v)}
+          className="md:hidden text-pink text-2xl leading-none w-10 h-10 flex items-center justify-center rounded-lg hover:bg-pink-pale transition-colors"
+        >
+          {open ? "✕" : "☰"}
         </button>
+      </div>
+
+      <div
+        id="mobile-menu"
+        className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-out border-t border-border ${
+          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="px-4 py-4 flex flex-col gap-1 bg-white">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="text-base text-text font-medium py-3 px-3 rounded-lg hover:bg-pink-pale hover:text-pink transition-colors"
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className="btn-primary mt-2 w-full text-sm"
+          >
+            Get a Quote
+          </a>
+        </div>
       </div>
     </nav>
   );

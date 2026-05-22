@@ -4,7 +4,7 @@ import { serviceAreas } from "@/data/areas";
 
 export default function AreasSection() {
   return (
-    <section id="areas" className="bg-cream py-20 md:py-24 px-6 md:px-12">
+    <section id="areas" className="bg-cream">
       <div className="container mx-auto">
         <SectionHeader
           label="Service Areas"

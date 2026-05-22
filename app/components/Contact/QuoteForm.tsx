@@ -35,7 +35,7 @@ export function QuoteForm() {
 
   if (submitted) {
     return (
-      <div className="bg-white rounded-2xl md:rounded-3xl p-8 md:p-10 flex flex-col items-center justify-center text-center gap-6 min-h-[400px]">
+      <div className="bg-white rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-10 flex flex-col items-center justify-center text-center gap-6 min-h-[400px]">
         <div className="w-16 h-16 rounded-full bg-pink-pale flex items-center justify-center text-3xl">
           🌸
         </div>
@@ -61,7 +61,7 @@ export function QuoteForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white rounded-2xl md:rounded-3xl p-8 md:p-10 space-y-6"
+      className="bg-white rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-10 space-y-6"
     >
       <h3 className="font-playfair text-2xl md:text-3xl font-semibold text-purple mb-8">
         Request a free quote

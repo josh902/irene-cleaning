@@ -3,7 +3,7 @@ import { TrustBadge } from "./TrustBadge";
 
 export function HeroCard() {
   return (
-    <div className="bg-white rounded-2xl md:rounded-3xl p-8 md:p-10 border border-border shadow-lg">
+    <div className="bg-white rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-10 border border-border shadow-lg">
       <h3 className="font-playfair text-xl md:text-2xl text-purple font-semibold mb-6">
         What we clean
       </h3>
