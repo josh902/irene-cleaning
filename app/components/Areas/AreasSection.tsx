@@ -11,18 +11,29 @@ export default function AreasSection() {
           <SectionHeader
             label="Service Areas"
             title="We come to you."
-            subtitle="Based in Halifax, we serve a wide area across HRM and surrounding communities. Not sure if we cover your area? Just ask!"
+            subtitle="Jophrey Cleaning serves Halifax and the greater HRM — bringing the same care and attention to every home, every time."
           />
         </Reveal>
 
-        <Reveal className="flex flex-wrap gap-3 mt-12">
-          {serviceAreas.map((area) => (
-            <AreaPill
-              key={area.id}
-              name={area.name}
-              isMain={area.isMain}
-            />
+        <div className="flex flex-wrap gap-3 mt-12">
+          {serviceAreas.map((area, idx) => (
+            <Reveal key={area.id} delay={idx * 50}>
+              <AreaPill name={area.name} isMain={area.isMain} />
+            </Reveal>
           ))}
+        </div>
+
+        <Reveal delay={serviceAreas.length * 50 + 50}>
+          <p className="mt-8 text-sm text-text-muted">
+            Don&apos;t see your area?{" "}
+            <a
+              href="#contact"
+              className="text-pink font-semibold hover:underline transition-colors"
+            >
+              Reach out →
+            </a>{" "}
+            — we probably cover it.
+          </p>
         </Reveal>
       </div>
     </section>
