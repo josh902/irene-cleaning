@@ -7,8 +7,8 @@ export default function HeroSection() {
       id="hero"
       className="relative flex items-center overflow-hidden min-h-[88svh] md:min-h-[92vh] lg:min-h-screen py-20 md:py-24"
       style={{
-        background:
-          "linear-gradient(135deg, rgba(106,16,64,0.75) 0%, rgba(194,24,91,0.75) 100%), url('/images/image1.avif')",
+        backgroundImage:
+          "linear-gradient(to right, rgba(106,16,64,0.60) 0%, rgba(194,24,91,0.22) 100%), url('/images/marketing1.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

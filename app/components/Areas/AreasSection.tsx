@@ -30,9 +30,9 @@ export default function AreasSection() {
               href="#contact"
               className="text-pink font-semibold hover:underline transition-colors"
             >
-              Reach out →
+              Reach out
             </a>{" "}
-            — we probably cover it.
+            — we may still service your location.
           </p>
         </Reveal>
       </div>

@@ -14,6 +14,11 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
+  useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
@@ -24,22 +29,25 @@ export default function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 glass border-b border-border">
-      <div className="container mx-auto px-4 md:px-8 lg:px-12 h-16 flex items-center justify-between">
-        <a href="#hero" className="flex items-center gap-2.5">
-          <Image
-            src="/images/logo.png"
-            alt="Jophrey Cleaning Services"
-            height={44}
-            width={44}
-            className="object-contain mix-blend-multiply"
-            priority
-          />
-          <div className="flex flex-col leading-none gap-0.5">
-            <span className="font-playfair text-base md:text-lg font-semibold tracking-tight">
+      <div className="container mx-auto px-4 md:px-8 lg:px-12 h-20 flex items-center justify-between">
+        <a href="#hero" className="flex items-center gap-2">
+          <div className="relative overflow-hidden flex-shrink-0 w-[96px] h-[72px]">
+            <Image
+              src="/images/logo3.png"
+              alt="Jophrey Cleaning Services"
+              fill
+              sizes="96px"
+              className="object-cover object-top mix-blend-multiply"
+              priority
+            />
+          </div>
+          <div className="hidden sm:block w-px h-8 bg-border/70 mx-0.5" />
+          <div className="flex flex-col leading-none gap-1">
+            <span className="font-playfair text-lg md:text-xl font-semibold tracking-tight">
               <span className="text-purple">Jophrey</span>{" "}
               <span className="text-pink italic">Cleaning</span>
             </span>
-            <span className="hidden sm:block text-[10px] uppercase tracking-[0.18em] text-text-muted font-medium">
+            <span className="hidden sm:block text-[11px] uppercase tracking-[0.22em] text-text-muted font-medium">
               Services
             </span>
           </div>

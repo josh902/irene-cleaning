@@ -17,7 +17,7 @@ export function AreaPill({ name, isMain = false }: AreaPillProps) {
       `}
     >
       {isMain && (
-        <Icon name="pin" className="w-3.5 h-3.5 mr-1.5 shrink-0 text-pink" strokeWidth={2} />
+        <Icon name="pin" className="w-3.5 h-3.5 mr-1.5 shrink-0 text-pink" strokeWidth={2} aria-hidden="true" />
       )}
       {name}
     </div>

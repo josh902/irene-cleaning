@@ -5,6 +5,13 @@ export const metadata: Metadata = {
   title: "Jophrey Cleaning Services | Halifax, NS",
   description:
     "Professional residential & commercial cleaning in Halifax, Bedford, Dartmouth and surrounding areas. Registered, reliable, and fully equipped.",
+  openGraph: {
+    title: "Jophrey Cleaning Services | Halifax, NS",
+    description:
+      "Professional residential & commercial cleaning in Halifax, Bedford, Dartmouth and surrounding areas. Registered, reliable, and fully equipped.",
+    type: "website",
+    locale: "en_CA",
+  },
 };
 
 export default function RootLayout({

@@ -24,7 +24,7 @@ export function ServiceCard({
       `}
     >
       <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-pink-pale text-pink flex items-center justify-center mb-5">
-        <Icon name={icon} className="w-6 h-6 md:w-7 md:h-7" />
+        <Icon name={icon} className="w-6 h-6 md:w-7 md:h-7" aria-hidden="true" />
       </div>
       <h3 className="font-playfair text-xl md:text-2xl font-semibold text-purple mb-3">
         {title}
