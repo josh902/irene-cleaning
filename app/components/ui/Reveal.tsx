@@ -8,23 +8,27 @@ interface RevealProps {
   className?: string;
 }
 
+type RevealState = "idle" | "hidden" | "visible";
+
 export function Reveal({ children, delay = 0, className = "" }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
+  const [state, setState] = useState<RevealState>("idle");
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setShown(true);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setState("visible");
       return;
     }
+
+    setState("hidden");
 
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setShown(true);
+          setState("visible");
           obs.unobserve(el);
         }
       },
@@ -39,7 +43,7 @@ export function Reveal({ children, delay = 0, className = "" }: RevealProps) {
       ref={ref}
       style={{ transitionDelay: `${delay}ms` }}
       className={`transition-all duration-700 ease-out will-change-transform ${
-        shown ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        state === "hidden" ? "opacity-0 translate-y-6" : "opacity-100 translate-y-0"
       } ${className}`}
     >
       {children}
