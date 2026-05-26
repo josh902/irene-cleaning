@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { Icon } from "./ui/Icon";
 
 const navLinks = [
   { href: "#services", label: "Services" },
@@ -24,9 +25,18 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 glass border-b border-border">
       <div className="container mx-auto px-4 md:px-8 lg:px-12 h-16 flex items-center justify-between">
-        <a href="#hero" className="flex items-center gap-1">
-          <div className="font-playfair text-lg md:text-xl font-semibold text-purple">
-            Jophrey <span className="text-pink italic">Cleaning</span>
+        <a href="#hero" className="flex items-center gap-2.5 group">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-purple to-pink flex items-center justify-center shrink-0 shadow-sm group-hover:shadow-md transition-shadow duration-200">
+            <Icon name="sparkles" className="w-4 h-4 text-white" strokeWidth={1.5} />
+          </div>
+          <div className="flex flex-col leading-none gap-0.5">
+            <span className="font-playfair text-base md:text-lg font-semibold tracking-tight">
+              <span className="text-purple">Jophrey</span>{" "}
+              <span className="text-pink italic">Cleaning</span>
+            </span>
+            <span className="hidden sm:block text-[10px] uppercase tracking-[0.18em] text-text-muted font-medium">
+              Services
+            </span>
           </div>
         </a>
 
