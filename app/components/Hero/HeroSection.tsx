@@ -7,12 +7,22 @@ export default function HeroSection() {
       id="hero"
       className="relative flex items-center overflow-hidden min-h-[88svh] md:min-h-[92vh] lg:min-h-screen py-20 md:py-24"
       style={{
-        backgroundImage:
-          "linear-gradient(to right, rgba(106,16,64,0.60) 0%, rgba(194,24,91,0.22) 100%), url('/images/marketing1.png')",
+        backgroundImage: "url('/images/background.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
+      {/* Uniform base: strong on mobile (full-width text), lighter on desktop */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-purple/75 lg:bg-purple/40"
+      />
+      {/* Directional layer: darkens left side on all breakpoints for premium depth */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{ background: "linear-gradient(to right, rgba(80,10,48,0.50) 0%, transparent 65%)" }}
+      />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute top-0 right-0 w-64 h-64 md:w-96 md:h-96 rounded-full bg-pink-pale opacity-60"

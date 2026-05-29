@@ -7,6 +7,7 @@ import OwnerSection from "./components/Owner/OwnerSection";
 import AreasSection from "./components/Areas/AreasSection";
 import ContactSection from "./components/Contact/ContactSection";
 import { Footer } from "./components/Footer";
+import { ScrollToTop } from "./components/ui/ScrollToTop";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <AreasSection />
       <ContactSection />
       <Footer />
+      <ScrollToTop />
     </main>
   );
 }

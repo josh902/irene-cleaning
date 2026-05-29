@@ -16,7 +16,7 @@ npm run build    # Production build
 npm run lint     # Run ESLint
 ```
 
-No test suite is configured.
+Package manager: **npm** (package-lock.json). No test suite is configured.
 
 ## Architecture
 
@@ -32,6 +32,10 @@ All site content lives in `data/` as typed TypeScript arrays — not fetched fro
 
 Components import directly from `@/data/*`. To add/change content (new service, new area, etc.), edit these files — the UI picks it up automatically.
 
+**Data flags:**
+- `isHighlighted` on `Service` — marks the "Not sure what you need?" card; `ServiceCard` renders it with a distinct visual treatment
+- `isMain` on `Area` — marks the four primary cities (Halifax, Bedford, Dartmouth, Sackville); `AreaPill` styles these differently
+
 ### Component structure
 
 `app/components/` is organized by page section, mirroring the single-page scroll layout:
@@ -40,15 +44,69 @@ Components import directly from `@/data/*`. To add/change content (new service, 
 Navbar → Hero → Services → Gallery → WhyUs → Owner → Areas → Contact → Footer
 ```
 
-Each section folder (e.g. `Hero/`, `Services/`) contains the section component plus any sub-components it owns. Shared primitives are in `ui/` (Button, Badge, SectionHeader).
+Each section folder (e.g. `Hero/`, `Services/`) contains the section component plus any sub-components it owns. Shared primitives are in `ui/` (Button, Icon, Reveal, SectionHeader).
 
 `app/page.tsx` is intentionally minimal — it just composes the section components in order. The page is a single route; all navigation is anchor-scroll (`#services`, `#contact`, etc.).
 
+### Client components
+
+Exactly three components use `"use client"`:
+
+| Component | Why |
+|-----------|-----|
+| `app/components/ui/Reveal.tsx` | `IntersectionObserver` + state for scroll animation |
+| `app/components/Navbar.tsx` | Mobile menu toggle state + keyboard handlers |
+| `app/components/Contact/QuoteForm.tsx` | Form state + submission flow |
+
+Everything else is a Server Component. Don't add `"use client"` without a specific reason.
+
+### UI primitives
+
+**`Button`** ([app/components/ui/Button.tsx](app/components/ui/Button.tsx)) — polymorphic: renders `<a>` when `href` is passed, `<button>` otherwise. Always use this for CTAs.
+
+**`Icon`** ([app/components/ui/Icon.tsx](app/components/ui/Icon.tsx)) — central Lucide icon registry. All icon names used in `data/` (e.g. `"home"`, `"phone"`, `"mail"`) resolve through this component's `iconMap`. To add a new icon: import it from `lucide-react` and add it to the map. Don't import Lucide icons directly in section components.
+
+**`Reveal`** ([app/components/ui/Reveal.tsx](app/components/ui/Reveal.tsx)) — scroll fade-in animation via `IntersectionObserver`. **This project has no Framer Motion or GSAP** — use `Reveal` for all scroll animations. Usage:
+
+```tsx
+<Reveal delay={idx * 80}>
+  <ServiceCard ... />
+</Reveal>
+```
+
+Stagger children with `delay={idx * 80}` or `delay={idx * 100}`. Automatically respects `prefers-reduced-motion`.
+
+**`SectionHeader`** — section label + heading + optional subtitle. Use it for the top of every section to maintain consistent visual rhythm.
+
 ### Styling
 
-Tailwind CSS v4 (PostCSS plugin via `@tailwindcss/postcss`), but the project uses a **v3-format config file** (`tailwind.config.ts`) loaded via `@config "../tailwind.config.ts"` at the top of `app/globals.css`. Brand color tokens (`pink`, `purple`, `pink-pale`, `pink-mid`, `cream`, `text-muted`, `border`) and fonts (`font-playfair`, `font-dmsans`) live in `tailwind.config.ts` — edit there, not in `globals.css`. Use these tokens rather than hardcoding hex values.
+Tailwind CSS v4 (PostCSS plugin via `@tailwindcss/postcss`), but the project uses a **v3-format config file** (`tailwind.config.ts`) loaded via `@config "../tailwind.config.ts"` at the top of `app/globals.css`. Edit tokens in `tailwind.config.ts` — not in `globals.css`.
 
-Google Fonts (Playfair Display, DM Sans) are loaded via a CSS `@import url(...)` at the very first line of `globals.css` — keep it first, since `@import` rules must precede all other rules.
+**Color tokens** (use these, never hardcode hex):
+
+| Token | Hex | Usage |
+|-------|-----|-------|
+| `purple` | #6a1040 | Primary brand (dark plum) |
+| `purple-dark` | #4a0a2e | Hover / deep variant |
+| `pink` | #c2185b | Accent / icon fills |
+| `pink-light` | #e91e8c | Bright accent |
+| `pink-pale` | #fce4ec | Light backgrounds |
+| `pink-mid` | #f48fb1 | Mid-tone fills |
+| `cream` | #fdf8fb | Page background |
+| `text` | #2a0a1a | Body text |
+| `text-muted` | #7a4060 | Secondary text |
+| `border` | #e8c8d8 | Borders / dividers |
+
+**Fonts:** `font-playfair` (headings, Playfair Display), `font-dmsans` (body, DM Sans).
+
+Google Fonts are loaded via `@import url(...)` at the very first line of `globals.css` — keep it first.
+
+**Global CSS utilities** in `app/globals.css` — use these instead of reinventing inline:
+- `.btn-primary` — primary CTA button styles
+- `.section-label` — small uppercase section label
+- `.form-group` — form field wrapper with label
+- `.glass` — frosted glass card effect
+- Gradient helpers for brand background treatments
 
 ### Next config
 
@@ -60,4 +118,4 @@ Google Fonts (Playfair Display, DM Sans) are loaded via a CSS `@import url(...)`
 
 ### Contact form
 
-`QuoteForm` is a `"use client"` component — the only client component in the project. No backend yet: on submit it swaps to an in-form thank-you screen (with a "Send another request" reset link). Form state is local `useState`; it imports `services` from the data layer to populate the service dropdown.
+`QuoteForm` has no backend. On submit it swaps to an in-form thank-you screen with a "Send another request" reset link. Form state is local `useState`; it imports `services` from the data layer to populate the service dropdown.

@@ -147,6 +147,13 @@ label {
   backdrop-filter: blur(8px);
 }
 
+@keyframes scroll-btn-pop {
+  0%   { opacity: 0; transform: scale(0.4); }
+  60%  { opacity: 1; transform: scale(1.18); }
+  80%  { transform: scale(0.93); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
 @media (max-width: 768px) {
   h1 {
     @apply text-3xl;
