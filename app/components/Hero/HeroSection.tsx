@@ -6,7 +6,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative flex items-center overflow-hidden min-h-[88svh] md:min-h-[92vh] lg:min-h-screen py-20 md:py-24"
+      className="relative flex items-center overflow-hidden min-h-[88svh] md:min-h-[92vh] lg:min-h-screen pt-12 pb-16 md:py-24"
       style={{
         backgroundImage: "url('/images/background.png')",
         backgroundSize: "cover",
@@ -38,17 +38,17 @@ export default function HeroSection() {
       <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 bg-pink-pale text-purple px-4 py-2 rounded-full border border-pink-mid mb-6 font-playfair italic text-xs md:text-sm">
+            <div className="inline-flex items-center gap-2 bg-pink-pale text-purple px-4 py-2 rounded-full border border-pink-mid mb-3 md:mb-6 font-playfair italic text-xs md:text-sm">
               "Actions Speak Louder Than Words"
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-playfair font-semibold text-white mb-6 leading-tight text-balance">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-playfair font-semibold text-white mb-4 md:mb-6 leading-tight text-balance">
               Halifax cleaning where the{" "}
               <em className="text-pink-mid italic">owner</em> shows up — to
               every single job.
             </h1>
 
-            <p className="text-base md:text-xl text-white/90 mb-8 leading-relaxed max-w-md text-pretty">
+            <p className="text-base md:text-xl text-white/90 mb-6 md:mb-8 leading-relaxed max-w-md text-pretty">
               Irene personally works on every cleaning alongside her team — so
               you always know who&apos;s coming into your home. Supplies
               included, professionally registered, and flexible around your

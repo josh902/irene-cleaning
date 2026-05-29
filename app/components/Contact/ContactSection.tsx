@@ -43,8 +43,8 @@ export default function ContactSection() {
             />
             <ContactWay
               icon="pin"
-              label="Based in"
-              value="101 Cutter Dr, Halifax, NS"
+              label="Service Area"
+              value="Serving Halifax, Bedford, Dartmouth & surrounding areas"
               isAddress
             />
           </Reveal>
