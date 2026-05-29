@@ -1,5 +1,6 @@
 import Button from "../ui/Button";
 import { HeroCard } from "./HeroCard";
+import { Icon } from "../ui/Icon";
 
 export default function HeroSection() {
   return (
@@ -42,14 +43,16 @@ export default function HeroSection() {
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-playfair font-semibold text-white mb-6 leading-tight text-balance">
-              Halifax's most <em className="text-pink-mid italic">trusted</em>{" "}
-              local cleaning service.
+              Halifax cleaning where the{" "}
+              <em className="text-pink-mid italic">owner</em> shows up — to
+              every single job.
             </h1>
 
             <p className="text-base md:text-xl text-white/90 mb-8 leading-relaxed max-w-md text-pretty">
-              Friendly, reliable, and professionally registered. Irene and the
-              Jophrey team bring everything needed to leave your home sparkling
-              — every single time.
+              Irene personally works on every cleaning alongside her team — so
+              you always know who&apos;s coming into your home. Supplies
+              included, professionally registered, and flexible around your
+              schedule.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -59,6 +62,18 @@ export default function HeroSection() {
               <Button variant="outline-light" href="#services">
                 Our services
               </Button>
+            </div>
+
+            <div className="flex items-start gap-2 mt-4 text-white/65">
+              <Icon
+                name="shield"
+                className="w-4 h-4 mt-0.5 flex-shrink-0"
+                strokeWidth={2}
+              />
+              <p className="text-xs md:text-sm italic leading-snug">
+                Not completely satisfied? Irene will personally return to make
+                it right, at no additional cost.
+              </p>
             </div>
           </div>
 

@@ -8,20 +8,24 @@ import AreasSection from "./components/Areas/AreasSection";
 import ContactSection from "./components/Contact/ContactSection";
 import { Footer } from "./components/Footer";
 import { ScrollToTop } from "./components/ui/ScrollToTop";
+import { MobileCtaBar } from "./components/ui/MobileCtaBar";
 
 export default function Home() {
   return (
     <main>
       <Navbar />
       <HeroSection />
+      <OwnerSection />
       <ServicesSection />
       <GallerySection />
       <WhySection />
-      <OwnerSection />
       <AreasSection />
       <ContactSection />
       <Footer />
+      {/* Spacer so the fixed mobile CTA bar doesn't cover footer content */}
+      <div className="h-20 lg:hidden" aria-hidden="true" />
       <ScrollToTop />
+      <MobileCtaBar />
     </main>
   );
 }

@@ -1,7 +1,37 @@
 import { SectionHeader } from "../ui/SectionHeader";
 import { Reveal } from "../ui/Reveal";
-import Image from "next/image";
-import { Check } from "lucide-react";
+import { Icon } from "../ui/Icon";
+
+const steps = [
+  {
+    number: 1,
+    icon: "phone",
+    title: "Request a quote",
+    description:
+      "Submit the form or call or text Irene directly. She personally handles every inquiry — you'll always hear back from her, not a call centre.",
+  },
+  {
+    number: 2,
+    icon: "calendar",
+    title: "Book a time that fits your life",
+    description:
+      "Irene will find a slot that works for you. No narrow booking windows or take-it-or-leave-it scheduling.",
+  },
+  {
+    number: 3,
+    icon: "sparkles",
+    title: "Irene arrives with her team",
+    description:
+      "She brings her team, all the supplies, and the same standard she holds herself to at every single home. You just have to let them in.",
+  },
+  {
+    number: 4,
+    icon: "shield",
+    title: "You check, we fix, then we leave",
+    description:
+      "Irene checks in with you before the team goes. If something was missed, she corrects it on the spot. Not satisfied after that? She returns at no additional cost — no arguments, no hassle.",
+  },
+];
 
 export default function GallerySection() {
   return (
@@ -9,51 +39,34 @@ export default function GallerySection() {
       <div className="container mx-auto">
         <Reveal>
           <SectionHeader
-            label="Our Work"
-            title="Transformation In Action"
-            subtitle="See the quality and attention to detail we bring to every cleaning job."
+            label="How It Works"
+            title="Here's exactly what happens when you book"
+            subtitle="No surprises. No strangers. No hassle."
           />
         </Reveal>
 
-        <Reveal className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center mt-12">
-          <div className="order-2 lg:order-1">
-            <div className="relative h-64 sm:h-80 md:h-96 lg:h-[400px] rounded-2xl md:rounded-3xl overflow-hidden shadow-lg">
-              <Image
-                src="/images/image2.avif"
-                alt="Professional cleaning service showcase"
-                fill
-                className="object-cover"
-                quality={90}
-              />
-            </div>
-          </div>
-
-          <div className="order-1 lg:order-2">
-            <h3 className="font-playfair text-2xl md:text-3xl font-semibold text-purple mb-4">
-              Professional Results, Every Time
-            </h3>
-            <p className="text-base md:text-lg text-text-muted leading-relaxed mb-6">
-              From living rooms to kitchens, from bedrooms to bathrooms — we
-              bring the same level of care and attention to every room in your
-              home. Our team uses professional-grade equipment and eco-friendly
-              products to deliver spotless results.
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 p-4 bg-white rounded-xl border-l-4 border-pink">
-                <Check className="w-6 h-6 text-pink flex-shrink-0" strokeWidth={2.5} aria-hidden="true" />
-                <span className="font-semibold text-purple">
-                  Detailed, thorough cleaning in every corner
-                </span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12">
+          {steps.map((step, idx) => (
+            <Reveal key={step.number} delay={idx * 100}>
+              <div className="bg-white rounded-2xl border border-border p-6 md:p-8">
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-10 h-10 rounded-full bg-pink-pale flex items-center justify-center flex-shrink-0">
+                    <Icon name={step.icon} className="w-5 h-5 text-pink" />
+                  </div>
+                  <span className="text-xs font-bold uppercase tracking-widest text-text-muted">
+                    Step {step.number}
+                  </span>
+                </div>
+                <h3 className="font-playfair text-xl font-semibold text-purple mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-base text-text-muted leading-relaxed">
+                  {step.description}
+                </p>
               </div>
-              <div className="flex items-center gap-3 p-4 bg-white rounded-xl border-l-4 border-pink">
-                <Check className="w-6 h-6 text-pink flex-shrink-0" strokeWidth={2.5} aria-hidden="true" />
-                <span className="font-semibold text-purple">
-                  Safe, quality products for your family
-                </span>
-              </div>
-            </div>
-          </div>
-        </Reveal>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
