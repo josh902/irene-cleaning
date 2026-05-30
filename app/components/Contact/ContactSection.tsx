@@ -49,9 +49,11 @@ export default function ContactSection() {
             />
           </Reveal>
 
-          <Reveal delay={150}>
-            <QuoteForm />
-          </Reveal>
+          <div id="quote-form">
+            <Reveal delay={150}>
+              <QuoteForm />
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>

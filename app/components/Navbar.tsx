@@ -64,7 +64,7 @@ export default function Navbar() {
             </a>
           ))}
 
-          <a href="#contact" className="btn-primary text-xs md:text-sm">
+          <a href="#quote-form" className="btn-primary text-xs md:text-sm">
             Get a Quote
           </a>
         </div>
@@ -99,7 +99,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="#quote-form"
             onClick={() => setOpen(false)}
             className="btn-primary mt-2 w-full text-sm"
           >

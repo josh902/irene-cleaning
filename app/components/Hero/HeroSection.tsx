@@ -56,7 +56,7 @@ export default function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="primary" href="#contact">
+              <Button variant="primary" href="#quote-form">
                 Get a free quote
               </Button>
               <Button variant="outline-light" href="#services">
