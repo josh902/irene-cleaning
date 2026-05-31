@@ -15,6 +15,8 @@ const emptyForm = {
 export function QuoteForm() {
   const [formData, setFormData] = useState(emptyForm);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -23,14 +25,37 @@ export function QuoteForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error ?? "Something went wrong. Please try again.");
+        return;
+      }
+
+      setSubmitted(true);
+    } catch {
+      setError("Could not connect. Please check your connection and try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleReset = () => {
     setFormData(emptyForm);
     setSubmitted(false);
+    setError(null);
   };
 
   if (submitted) {
@@ -78,6 +103,7 @@ export function QuoteForm() {
             value={formData.firstName}
             onChange={handleChange}
             required
+            disabled={loading}
           />
         </div>
         <div className="form-group">
@@ -90,6 +116,7 @@ export function QuoteForm() {
             value={formData.lastName}
             onChange={handleChange}
             required
+            disabled={loading}
           />
         </div>
       </div>
@@ -104,6 +131,7 @@ export function QuoteForm() {
           value={formData.phone}
           onChange={handleChange}
           required
+          disabled={loading}
         />
       </div>
 
@@ -115,6 +143,7 @@ export function QuoteForm() {
           value={formData.service}
           onChange={handleChange}
           required
+          disabled={loading}
         >
           <option value="">Select a service...</option>
           {services.map((service) => (
@@ -135,6 +164,7 @@ export function QuoteForm() {
           value={formData.area}
           onChange={handleChange}
           required
+          disabled={loading}
         />
       </div>
 
@@ -146,11 +176,22 @@ export function QuoteForm() {
           placeholder="Home size, special requests, preferred days..."
           value={formData.notes}
           onChange={handleChange}
+          disabled={loading}
         />
       </div>
 
-      <button type="submit" className="w-full btn-primary text-center font-semibold">
-        Send quote request →
+      {error && (
+        <p role="alert" className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+          {error}
+        </p>
+      )}
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full btn-primary text-center font-semibold disabled:opacity-60 disabled:cursor-not-allowed"
+      >
+        {loading ? "Sending…" : "Send quote request →"}
       </button>
     </form>
   );
